@@ -1,160 +1,162 @@
-Project Report: Indian Stock Dashboard with Forecast & Sentiment Analysis
-1. Project Overview
+📊 Project Report: Stock Market Forecasting and Analysis Dashboard
+1. Introduction
 
-The Indian Stock Dashboard project is an interactive web application built using Streamlit, designed to provide real-time stock data, technical analysis, forecasting, and news sentiment analysis for NSE-listed stocks. It allows investors, traders, and analysts to monitor stock trends, visualize key metrics, and make informed decisions.
+The stock market is inherently volatile, influenced by macroeconomic events, company performance, and global market trends. Accurate forecasting and visualization tools can help investors, traders, and analysts make informed decisions.
+This project aims to build an interactive dashboard that integrates real-time stock price tracking, technical indicators, and machine learning forecasting models. It is designed for ease of use and accessible deployment via Streamlit.
 
-Key features include:
+2. Objectives
 
-Real-time price metrics and candlestick charts.
+Collect live financial data using yFinance API.
 
-Technical indicators like SMA, EMA, RSI, and MACD.
+Enable interactive visualization of stock trends and technical indicators.
 
-Stock price forecasting using Prophet, LSTM, ARIMA, and SARIMA.
+Apply machine learning models (ARIMA, SARIMA, Prophet, LSTM) for stock price prediction.
 
-Latest news scraping with sentiment analysis (positive, neutral, negative).
+Compare models using standard performance evaluation metrics.
 
-Data download options in CSV and Excel formats.
+Provide multi-stock comparison and portfolio analysis tools.
 
-Single stock view or comparison mode for multiple stocks.
+Ensure deployment readiness for continuous accessibility.
 
-Auto-refresh functionality for live data monitoring.
+3. System Architecture
+Data Flow
 
-2. Technologies & Libraries
+Data Source: Yahoo Finance (via yfinance)
 
-Python 3.11+
+Preprocessing: Cleaning, handling missing values, train-test splitting
 
-Streamlit – For interactive web UI
+Analysis & Visualization: Plotly charts, moving averages, RSI, Bollinger Bands
 
-yfinance – To fetch historical stock data from Yahoo Finance
+Forecasting Models:
 
-Plotly – For dynamic charts (Candlestick, Line plots)
+ARIMA – Statistical time series model
 
-pandas & numpy – Data manipulation and computation
+SARIMA – Seasonality-adjusted ARIMA
 
-scikit-learn – Metrics evaluation (MAE, RMSE, MAPE)
+Prophet – Trend + Seasonality modeling by Meta
 
-statsmodels – ARIMA and SARIMA forecasting
+LSTM – Deep learning recurrent network
 
-Prophet – Time series forecasting
+Evaluation Metrics: MAE, RMSE, MAPE, R², Directional Accuracy
 
-TensorFlow / Keras – LSTM-based forecasting model
+User Interface: Streamlit web application
 
-nltk – Sentiment analysis using VADER
+4. Methodology
+Step 1: Data Collection
 
-BeautifulSoup / requests – Scraping latest stock news
+Used yfinance.download() to fetch historical stock prices (Open, High, Low, Close, Volume).
 
-xlsxwriter – Export data to Excel
+Supported multi-stock selection and date range filtering.
 
-3. Application Features
-3.1 Sidebar Input
+Step 2: Exploratory Data Analysis
 
-Enter stock symbols (comma-separated).
+Line charts of closing prices.
 
-Select mode: Single Stock or Compare Multiple.
+50-day & 200-day moving averages.
 
-Choose forecast method: None, Prophet, LSTM, ARIMA, SARIMA.
+RSI & Bollinger Bands for trend insights.
 
-Set forecast horizon in days (5–365).
+Step 3: Forecasting Models
 
-Auto-refresh interval in seconds (optional).
+ARIMA: Captures autocorrelation in prices.
 
-3.2 Single Stock Mode
+SARIMA: Adds seasonality adjustments.
 
-Metrics displayed: Current price, Previous close.
+Prophet: Decomposes time series into trend, seasonality, and holidays.
 
-Candlestick chart over 2 years with SMA20, SMA50, EMA20 overlays.
+LSTM: Captures non-linear dependencies with past stock prices.
 
-RSI and MACD charts for momentum analysis.
+Step 4: Model Evaluation
 
-Forecast visualization with selected model and evaluation metrics (MAE, RMSE, MAPE).
+Used metrics:
 
-Latest news with sentiment classification using VADER (Positive, Neutral, Negative).
+MAE (Mean Absolute Error)
 
-Download options: CSV and Excel.
+RMSE (Root Mean Squared Error)
 
-3.3 Compare Multiple Stocks
+MAPE (Mean Absolute Percentage Error)
 
-Display line chart comparing historical closing prices.
+R² Score (Goodness of Fit)
 
-Forecasting for each stock with performance evaluation.
+Directional Accuracy (%)
 
-Data export for comparison analysis.
+Step 5: Dashboard Implementation
 
-4. Technical Implementation
-4.1 Data Acquisition
+Single Stock Analysis: Price charts, indicators, forecasts, metrics.
 
-Stock data retrieved using yfinance.Ticker(symbol).history(period="2y").
+Multi-Stock Comparison: Side-by-side performance visualization.
 
-Latest news scraped from Yahoo Finance using BeautifulSoup.
+Portfolio Analysis: Cumulative returns, correlation heatmaps.
 
-4.2 Technical Indicators
+5. Results
+Visualizations
 
-SMA (Simple Moving Average) 20 & 50 days.
+Interactive Plotly charts for stock price movements.
 
-EMA (Exponential Moving Average) 20 days.
+Forecast plots with historical + predicted ranges.
 
-RSI (Relative Strength Index) for overbought/oversold conditions.
+Metrics displayed via Streamlit metric cards.
 
-MACD (Moving Average Convergence Divergence) with Signal line.
+Correlation heatmap for portfolio diversification analysis.
 
-4.3 Forecast Models
+Forecasting Accuracy
 
-Prophet – Additive time series forecasting, handles seasonality & trends.
+Prophet & LSTM generally performed better on longer time horizons.
 
-LSTM – Deep learning sequence model for predicting future stock prices.
+ARIMA/SARIMA worked well for short-term forecasts.
 
-ARIMA – Classical time series model capturing trend and autocorrelation.
+Directional accuracy ranged between 55–70%, depending on stock volatility.
 
-SARIMA – Seasonal ARIMA for datasets with seasonal trends.
+6. Features of the Dashboard
 
-4.4 Sentiment Analysis
+📈 Real-time stock data retrieval
 
-VADER (Valence Aware Dictionary for Sentiment Reasoning) scores news headlines.
+🔍 Technical analysis indicators (MA, RSI, Bollinger Bands)
 
-Sentiment thresholds:
+🤖 Machine learning forecasting models (ARIMA, SARIMA, Prophet, LSTM)
 
-> 0.05: Positive
+📊 Multi-stock comparison
 
-< -0.05: Negative
+💼 Portfolio analysis with correlation insights
 
-Between -0.05 and 0.05: Neutral
+🌐 Web deployment with Streamlit
 
-4.5 Metrics Evaluation
-
-MAE (Mean Absolute Error) – Average magnitude of prediction errors.
-
-RMSE (Root Mean Squared Error) – Penalizes larger errors.
-
-MAPE (%) – Mean Absolute Percentage Error, for normalized error evaluation.
-
-5. User Interface
-
-Built entirely with Streamlit components.
-
-Interactive sidebar for user inputs.
-
-Dynamic charts for historical and forecast data.
-
-News with clickable links and sentiment badges.
-
-Responsive layout for both single and multi-stock views.
-
-6. Challenges & Solutions
-Challenge	Solution
-Handling missing data in historical stock prices	Applied .dropna() and rolling windows for indicators
-Forecasting with small datasets	Used LSTM with MinMax scaling and Prophet with additive model
-News scraping reliability	Handled HTTP errors and missing elements in BeautifulSoup
-Multiple stock comparison & forecast	Joined dataframes, evaluated metrics individually
 7. Conclusion
 
-The Indian Stock Dashboard successfully integrates stock market analysis, forecasting, and sentiment analysis in a single interactive platform. Users can:
+This project successfully integrates time-series forecasting models with financial data visualization into a single interactive platform. It enables:
 
-Monitor real-time stock performance.
+Investors to monitor stocks in real time.
 
-Visualize technical indicators for better trading decisions.
+Analysts to compare forecasting models.
 
-Forecast future price trends using multiple models.
+Portfolio managers to optimize diversification.
 
-Stay updated with news sentiment affecting the stock.
+8. Future Improvements
 
-This project demonstrates end-to-end data acquisition, analysis, forecasting, visualization, and reporting, making it a strong tool for traders and analysts.
+Add news sentiment analysis to correlate market movement with events.
+
+Integrate reinforcement learning for automated trading strategies.
+
+Deploy on AWS/GCP with auto-refreshing background jobs for continuous updates.
+
+Expand to cryptocurrency and commodity price forecasting.
+
+9. Tech Stack
+
+Programming Language: Python
+
+Libraries: yFinance, Pandas, NumPy, Scikit-learn, Statsmodels, Prophet, TensorFlow/Keras, Plotly
+
+Framework: Streamlit
+
+Deployment: EC2 / Streamlit Cloud
+
+10. References
+
+Yahoo Finance API documentation
+
+Facebook Prophet model papers
+
+Time series forecasting literature (ARIMA, LSTM)
+
+Streamlit official documentation
