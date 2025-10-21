@@ -11,6 +11,7 @@
       color: #222;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
     header {
       background: #0b132b;
@@ -23,7 +24,7 @@
       font-size: 2rem;
     }
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 2rem auto;
       background: #fff;
       padding: 2rem;
@@ -34,6 +35,7 @@
       color: #0b132b;
       border-left: 4px solid #5bc0be;
       padding-left: 10px;
+      margin-bottom: 1rem;
     }
     a.button {
       display: inline-block;
@@ -48,32 +50,103 @@
     a.button:hover {
       background: #3aafa9;
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+    iframe, video {
+      display: block;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0b132b;
+      color: #fff;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>📊 Stock Market Forecasting & Analysis Dashboard</h1>
-    <p>Interactive visualization and forecasting using Streamlit, yFinance, and machine learning models.</p>
+    <p>Interactive visualization and forecasting using Streamlit, yFinance, and ML models.</p>
   </header>
 
   <section>
-    <h2>🚀 About the Project</h2>
-    <p>This dashboard provides real-time stock market analysis and forecasting using multiple models — ARIMA, SARIMA, Prophet, and LSTM. It allows users to visualize stock trends, analyze performance, and compare forecasting models interactively.</p>
-
-    <h2>🎯 Features</h2>
-    <ul>
-      <li>Fetch live financial data using <b>yFinance API</b>.</li>
-      <li>Visualize trends and indicators with <b>Plotly</b>.</li>
-      <li>Compare multiple models (ARIMA, SARIMA, Prophet, LSTM).</li>
-      <li>Evaluate model accuracy (MAE, RMSE, R², Directional Accuracy).</li>
-      <li>Interactive dashboard built using <b>Streamlit</b>.</li>
-    </ul>
-
-    <h2>🌐 Deployment</h2>
-    <p>Deployed using GitHub and Streamlit Cloud.</p>
+    <h2>🚀 Project Overview</h2>
+    <p>
+      This project provides real-time stock market analysis and forecasting using multiple models — ARIMA, SARIMA, Prophet, and LSTM.
+      It visualizes trends, compares model performance, and provides an intuitive dashboard experience for investors and analysts.
+    </p>
 
     <a href="#" class="button">View Live Dashboard</a>
-    <!-- Replace # with your Streamlit app link when ready -->
+    <!-- Replace # with your Streamlit Cloud app link -->
   </section>
+
+  <section>
+    <h2>🎯 Features</h2>
+    <ul>
+      <li>Collect live financial data using <b>yFinance API</b>.</li>
+      <li>Forecast with <b>ARIMA, SARIMA, Prophet, and LSTM</b>.</li>
+      <li>Visualize performance using <b>Plotly</b> charts.</li>
+      <li>Compare models using <b>MAE, RMSE, R², and MAPE</b>.</li>
+      <li>Interactive Streamlit-based user interface.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🖼️ Screenshots</h2>
+    <div class="gallery">
+      <img src="Screenshot 2025-10-21 112323.png" />
+      <img src="Screenshot 2025-10-21 112411.png" />
+      <img src="Screenshot 2025-10-21 112429.png" />
+      <img src="Screenshot 2025-10-21 112554.png" />
+      <img src="Screenshot 2025-10-21 112607.png" />
+      <img src="Screenshot 2025-10-21 112703.png" />
+    </div>
+    <!-- Add your screenshots to a folder named "images" in the repo -->
+  </section>
+
+  <section>
+    <h2>🎥 Demo Video</h2>
+    <!-- Option 1: YouTube embed -->
+    <iframe width="560" height="315" 
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+      title="Stock Dashboard Demo"
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+
+    <!-- Option 2: Local video (replace with your file name) -->
+    <!-- <video controls>
+      <source src="demo.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video> -->
+  </section>
+
+  <section>
+    <h2>🌐 Deployment</h2>
+    <p>Deployed on GitHub Pages for documentation and Streamlit Cloud for live interactivity.</p>
+  </section>
+
+  <footer>
+    <p>Developed by <b>Vijeth Amin</b> | <a href="https://github.com/VijethAmin" style="color:#5bc0be;">GitHub Profile</a></p>
+  </footer>
 </body>
 </html>
